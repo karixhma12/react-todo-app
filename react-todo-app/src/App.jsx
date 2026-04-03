@@ -11,14 +11,14 @@ function App(){
     setInput("");
   }
 
-  useState(()=>{
+  useEffect(()=>{
     let stored = localStorage.getItem("todos");
     if(stored){
       setTodos(JSON.parse(stored));
     }
   },[]);
 
-  useState(()=>{
+  useEffect(()=>{
     localStorage.setItem("todos",JSON.stringify(todos));
   },[todos]);
 
