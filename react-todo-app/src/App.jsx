@@ -16,7 +16,12 @@ function App(){
       <h1> Todo App </h1>
       <input value={input} onChange={(e)=>{setInput(e.target.value)}}/>
       <button onClick={addTodo}> Add Todo </button>
-      
+      {todos.map((todo,index)=>{
+        return(
+        <div key={index}>
+          {todo.text}
+        </div>)
+      })}
     </div>
   )
 }
