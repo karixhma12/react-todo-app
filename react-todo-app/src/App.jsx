@@ -11,6 +11,20 @@ function App(){
     setInput("");
   }
 
+  function mark(clickedIndex){
+    setTodos(
+      todos.map((t,i)=>{
+          if(i===clickedIndex){
+            return{
+              ...t,done : !t.done
+            }
+          }
+          return t;
+        }
+      )
+    )
+  }
+
   return(
     <div>
       <h1> Todo App </h1>
@@ -19,7 +33,10 @@ function App(){
       {todos.map((todo,index)=>{
         return(
         <div key={index}>
-          {todo.text}
+          <input type="checkbox" checked={todo.done} onChange={()=>{mark(index)}}/>
+          <span style={{textDecoration : todo.done ? "line-through" : "none"}}>
+            {todo.text}
+          </span>
         </div>)
       })}
     </div>
