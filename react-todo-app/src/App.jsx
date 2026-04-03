@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState,useEffect} from "react";
 
 
 function App(){
@@ -10,6 +10,17 @@ function App(){
     setTodos([...todos,newTodo]);
     setInput("");
   }
+
+  useState(()=>{
+    let stored = localStorage.getItem("todos");
+    if(stored){
+      setTodos(JSON.parse(stored));
+    }
+  },[]);
+
+  useState(()=>{
+    localStorage.setItem("todos",JSON.stringify(todos));
+  },[todos]);
 
   function mark(clickedIndex){
     setTodos(
