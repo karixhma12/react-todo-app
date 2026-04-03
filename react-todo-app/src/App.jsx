@@ -4,10 +4,19 @@ import {useState} from "react";
 function App(){
   const [input,setInput] = useState("");
   const [todos,setTodos] = useState([]);
+
+  function addTodo(){
+    let newTodo = {text : input, done : false}
+    setTodos([...todos,newTodo]);
+    setInput("");
+  }
+
   return(
     <div>
       <h1> Todo App </h1>
-      <input value={input} onChange={(e)=>{setInput(e.target.value)}}/> 
+      <input value={input} onChange={(e)=>{setInput(e.target.value)}}/>
+      <button onClick={addTodo}> Add Todo </button>
+      
     </div>
   )
 }
